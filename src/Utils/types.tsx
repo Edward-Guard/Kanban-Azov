@@ -14,14 +14,14 @@ export type MaterialType = {
 
 export type ModuleType = {
   Nome:string,
-  Data: Date[],
+  Data: string[],
   Componentes: MaterialType[]
   Conclusao: number
 };
 
 export type ShipType = {
   id:string
-  Data:Date
+  Data:string[]
   Conclusao: number
   Adcionais: ComponentType | null
   Modulos : ModuleType[]
