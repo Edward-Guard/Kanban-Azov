@@ -1,27 +1,28 @@
+import { useForm } from 'react-hook-form';
 import styles from './Input.module.css';
 
 function InputNewBoat() {
+  const { register, getValues } = useForm();
+  function addBoat() {
+    console.log(getValues());
+  }
   return (
     <div className={ styles.Input }>
-      <select name="model" id="">
+      <select id="" { ...register('model') }>
         <option value="260">260</option>
         <option value="380">380</option>
         <option value="480">480</option>
       </select>
-      <label className={ styles.Label_Current } htmlFor="numberBoat">
-        Num:
-        <input
-          className={ styles.Input_Current }
-          type="number"
-          name="current"
-          id="numberBoat"
-        />
-      </label>
-      <div>Adcionais</div>
-      <label htmlFor="delivery-date">
-        Prazo:
-        <input type="date" name="" id="delivery-date" />
-      </label>
+      <input
+        className={ styles.Input_Current }
+        type="number"
+        { ...register('current') }
+      />
+      <input type="date" { ...register('delivery') } />
+      <div>
+        <button>X</button>
+        <button onClick={ addBoat }>ok</button>
+      </div>
     </div>
   );
 }

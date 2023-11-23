@@ -5,14 +5,7 @@
     gap: 5px;
 }
 
-.Label_Current{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-    width: 200px;
-}
 
 .Input_Current{
-    width: 50px;
+    width: 35px;
 }
