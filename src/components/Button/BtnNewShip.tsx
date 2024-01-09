@@ -1,16 +1,25 @@
-import { useContext } from 'react';
-import Store from '../../Context/storeContext';
+import { useState } from 'react';
+import InputNewBoat from './InputNew';
 
 function BtnNewShip() {
-  const { addNewShip } = useContext(Store);
-  function add() {
-    addNewShip('teste');
-  }
+  const [showBoat, setShowBoat] = useState(false);
+  // const { addNewShip } = useContext(Store);
+  const add = () => {
+    setShowBoat(!showBoat);
+    // addNewShip('teste');
+  };
+
+  const newBoat = (
+    <button onClick={ () => add() }>
+      +New
+    </button>
+  );
 
   return (
-    <button onClick={ () => add() }>
-      + New
-    </button>
+    <div>
+      {showBoat ? <InputNewBoat showBtn={ add } /> : newBoat}
+    </div>
+
   );
 }
 

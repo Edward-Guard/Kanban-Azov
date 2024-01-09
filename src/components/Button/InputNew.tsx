@@ -1,10 +1,22 @@
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
 import styles from './Input.module.css';
+import Store from '../../Context/storeContext';
 
-function InputNewBoat() {
-  const { register, getValues } = useForm();
+type InputProps = {
+  showBtn: () => void;
+};
+
+function InputNewBoat({ showBtn } :InputProps) {
+  const { register } = useForm();
+  const { addNewShip } = useContext(Store);
+
+  function cancel() {
+    showBtn();
+  }
   function addBoat() {
-    console.log(getValues());
+    showBtn();
+    addNewShip('');
   }
   return (
     <div className={ styles.Input }>
@@ -20,7 +32,7 @@ function InputNewBoat() {
       />
       <input type="date" { ...register('delivery') } />
       <div>
-        <button>X</button>
+        <button onClick={ cancel }>X</button>
         <button onClick={ addBoat }>ok</button>
       </div>
     </div>
